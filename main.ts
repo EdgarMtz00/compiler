@@ -1,12 +1,7 @@
-const listener = Deno.listen({ port: 8000 });
-console.log("http://localhost:8000/");
+import lexical_analysis from './lexical_analysis.ts';
 
-for await (const conn of listener) {
-    serve(conn);
-}
+const input1 = 'identificador';
+const input2 = '3.42';
 
-async function serve(conn: Deno.Conn) {
-    for await (const { respondWith } of Deno.serveHttp(conn)) {
-        respondWith(new Response("Hello world"));
-    }
-}
+console.log(lexical_analysis(input1));
+console.log(lexical_analysis(input2));
